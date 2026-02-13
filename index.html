@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Status Detector 💘</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 15px;
+  }
+
+  .box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    text-align: center;
+  }
+
+  input {
+    padding: 12px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: 15px;
+  }
+
+  button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    margin-top: 12px;
+  }
+
+  button:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+  }
+
+  #result {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: left;
+    white-space: pre-line;
+    background: #000;
+    color: #00ff9c;
+    padding: 12px;
+    border-radius: 10px;
+    height: 180px;
+    overflow-y: auto;
+    display: none;
+  }
+
+  .loader {
+    width: 100%;
+    height: 6px;
+    background: #eee;
+    border-radius: 5px;
+    margin-top: 15px;
+    overflow: hidden;
+    display: none;
+  }
+
+  .progress {
+    height: 100%;
+    width: 0%;
+    background: #ff4d6d;
+    animation: load 5s linear forwards;
+  }
+
+  @keyframes load {
+    from { width: 0%; }
+    to { width: 100%; }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>💘 Valentine Status Detector</h2>
+  <input type="text" id="name" placeholder="Enter your name 😏">
+  <button id="scanBtn" onclick="startScan()">Check Status</button>
+
+  <div class="loader" id="loader">
+    <div class="progress"></div>
+  </div>
+
+  <div id="result"></div>
+</div>
+
+<script>
+function startScan() {
+  let name = document.getElementById("name").value.trim();
+  let resultDiv = document.getElementById("result");
+  let loader = document.getElementById("loader");
+  let btn = document.getElementById("scanBtn");
+
+  if (name === "") {
+    alert("⚠️ Name required for scanning...");
+    return;
+  }
+
+  btn.disabled = true;
+  resultDiv.style.display = "block";
+  loader.style.display = "block";
+  resultDiv.innerText = "";
+
+  let steps = [
+    "🔍 Connecting to WhatsApp server...",
+    "📂 Accessing hidden folder /DCIM/Notes...",
+    "💬 Recovering deleted chats...",
+    "📸 Extracting screenshots...",
+    "🧠 Analyzing keywords: 'mine', 'my world', 'jaan'...",
+    "⚡ Compiling evidence..."
+  ];
+
+  let i = 0;
+
+  let interval = setInterval(() => {
+    resultDiv.innerText += steps[i] + "\n";
+    resultDiv.scrollTop = resultDiv.scrollHeight;
+    i++;
+
+    if (i === steps.length) {
+      clearInterval(interval);
+
+      setTimeout(() => {
+        resultDiv.innerText += `
+
+💬 Chat History ❤️
+--------------------------------
+You: good night my world 🌍💖
+Them: sleep well 😘
+You: miss you 🥺
+Them: gn 😏
+
+📸 Screenshot saved as: ${name}_❤️.png
+
+💘 RESULT: ${name} is COMMITTED
+Status told to friends: "Single bro" 🤡
+`;
+        resultDiv.scrollTop = resultDiv.scrollHeight;
+      }, 800);
+    }
+  }, 700);
+}
+</script>
+
+</body>
+</html>
