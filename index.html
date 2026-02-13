@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -169,3 +170,120 @@ Status told to friends: "Single bro" 🤡
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Valentine Status Detector 💘</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      text-align: center;
+      padding-top: 80px;
+      color: #333;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      display: inline-block;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      width: 340px;
+    }
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #ff4d6d;
+      color: white;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #e63950;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 15px;
+      text-align: left;
+      white-space: pre-line;
+    }
+    input {
+      padding: 10px;
+      width: 90%;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h2>💘 Valentine Status Detector</h2>
+    <input type="text" id="name" placeholder="Enter your name 😏">
+    <br>
+    <button onclick="startScan()">Check Status</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function startScan() {
+      let name = document.getElementById("name").value.trim();
+
+      if (name === "") {
+        document.getElementById("result").innerText = "⚠️ Name required for scanning...";
+        return;
+      }
+
+      let steps = [
+        "🔍 Connecting to WhatsApp server...",
+        "📂 Accessing hidden folder /DCIM/Notes 😏",
+        "💬 Recovering deleted chats...",
+        "📸 Extracting screenshots...",
+        "🧠 Analyzing romantic keywords: 'mine', 'my world',...",
+        "⚡ Almost done...",
+         "⚡ Almost done..."
+      ];
+
+      let i = 0;
+      let resultDiv = document.getElementById("result");
+      resultDiv.innerText = "";
+
+      let interval = setInterval(() => {
+        resultDiv.innerText += steps[i] + "\n";
+        i++;
+
+        if (i === steps.length) {
+          clearInterval(interval);
+
+          setTimeout(() => {
+            resultDiv.innerText += `
+
+💬 Chat History ❤️"
+--------------------------------
+You: good night my world 🌍💖
+Them: sleep well  😘
+You: miss you  🥺
+Them: gn 😏
+
+📸 Screenshot saved as: ${name}_❤️.png
+
+
+
+
+💘 RESULT: ${name} is COMMITTED  
+Status told to friends: "Single bro" 🤡
+`;
+          }, 800);
+        }
+
+      }, 700);
+    }
+  </script>
+
+</body>
+</html>
+>>>>>>> 9740be57a87d2b85078ebbd94a6d886c475fe666
